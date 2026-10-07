@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it } from 'vitest'
 import App from './App'
-import { TripStoreProvider } from './store/TripStore'
+import { STORAGE_KEY } from './storage'
+import { TripStoreProvider, useTripStore } from './store/TripStore'
 
 function renderAt(path: string) {
   return render(
@@ -58,5 +59,61 @@ describe('App shell', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: 'Deine Reisen' }),
     ).toBeInTheDocument()
+  })
+})
+
+function StoreProbe() {
+  const { trips, createTrip } = useTripStore()
+  return (
+    <div>
+      <span data-testid="trip-count">{trips.length}</span>
+      <button
+        type="button"
+        onClick={() =>
+          createTrip({
+            name: 'Rom',
+            destination: 'Italien',
+            startDate: '2025-04-14',
+            endDate: '2025-04-18',
+          })
+        }
+      >
+        Anlegen
+      </button>
+    </div>
+  )
+}
+
+function renderProbe() {
+  return render(
+    <MemoryRouter>
+      <TripStoreProvider>
+        <StoreProbe />
+      </TripStoreProvider>
+    </MemoryRouter>,
+  )
+}
+
+describe('TripStore persistence (AC-02)', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  it('writes the full state to the single key on mutation and rehydrates on remount', async () => {
+    const user = userEvent.setup()
+    const first = renderProbe()
+
+    expect(screen.getByTestId('trip-count')).toHaveTextContent('0')
+    expect(localStorage.getItem(STORAGE_KEY)).toBeNull()
+
+    await user.click(screen.getByRole('button', { name: 'Anlegen' }))
+
+    expect(screen.getByTestId('trip-count')).toHaveTextContent('1')
+    expect(localStorage.getItem(STORAGE_KEY)).not.toBeNull()
+
+    first.unmount()
+
+    renderProbe()
+    expect(screen.getByTestId('trip-count')).toHaveTextContent('1')
   })
 })
