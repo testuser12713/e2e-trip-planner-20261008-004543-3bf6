@@ -1,0 +1,292 @@
+/* Component-scoped styles for the trip detail page (day plan).
+   Every value comes from the DESIGN.md :root tokens in index.css;
+   the shared stylesheet is closed and is not edited. */
+
+.trip-meta {
+  margin-top: var(--space-0);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.trip-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.trip-notfound {
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+}
+
+.day-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------
+   Day section card
+   --------------------------------------------------------------------- */
+.day-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2);
+  box-shadow: var(--color-shadow-card);
+}
+
+.day-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.day-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.day-title__weekday {
+  font-size: var(--size-h3);
+}
+
+.day-date {
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+/* ---------------------------------------------------------------------
+   Activity list / row grid
+   --------------------------------------------------------------------- */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-areas:
+    'time body'
+    'cost cost'
+    'actions actions';
+  gap: var(--space-0) var(--space-1);
+  align-items: start;
+  min-height: 56px;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.activity-time {
+  grid-area: time;
+  padding-top: 1px;
+  color: var(--color-accent);
+  font-size: var(--size-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.activity-body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0);
+}
+
+.activity-titleline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.activity-title {
+  color: var(--color-fg);
+  font-size: var(--size-body);
+  font-weight: 500;
+}
+
+.activity-location {
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.activity-cost {
+  grid-area: cost;
+  color: var(--color-fg-soft);
+  font-size: var(--size-small);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.activity-actions {
+  grid-area: actions;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* Category badges — a 12% tint of the category colour with the full-strength
+   colour as text (DESIGN.md Badge/Pill). */
+.badge--travel {
+  background: color-mix(in srgb, var(--color-cat-travel) 12%, var(--color-surface));
+  color: var(--color-cat-travel);
+}
+
+.badge--accommodation {
+  background: color-mix(in srgb, var(--color-cat-accommodation) 12%, var(--color-surface));
+  color: var(--color-cat-accommodation);
+}
+
+.badge--food {
+  background: color-mix(in srgb, var(--color-cat-food) 12%, var(--color-surface));
+  color: var(--color-cat-food);
+}
+
+.badge--activity {
+  background: color-mix(in srgb, var(--color-cat-activity) 12%, var(--color-surface));
+  color: var(--color-cat-activity);
+}
+
+.badge--shopping {
+  background: color-mix(in srgb, var(--color-cat-shopping) 12%, var(--color-surface));
+  color: var(--color-cat-shopping);
+}
+
+.badge--other {
+  background: color-mix(in srgb, var(--color-cat-other) 12%, var(--color-surface));
+  color: var(--color-cat-other);
+}
+
+/* ---------------------------------------------------------------------
+   Inline empty state
+   --------------------------------------------------------------------- */
+.empty-inline {
+  padding: var(--space-3) 0;
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+/* ---------------------------------------------------------------------
+   Inline activity form
+   --------------------------------------------------------------------- */
+.activity-form {
+  margin: var(--space-1) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+}
+
+.activity-form__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.activity-form .field__error::before {
+  content: '⚠ ';
+}
+
+.activity-form .form-actions {
+  margin-top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------
+   Confirm dialog
+   --------------------------------------------------------------------- */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: var(--color-overlay);
+}
+
+.confirm-dialog {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(27, 36, 48, 0.18);
+}
+
+.confirm-dialog__title {
+  font-size: var(--size-h2);
+}
+
+.confirm-dialog__body {
+  margin-top: var(--space-1);
+  color: var(--color-fg-soft);
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------
+   Responsive — two-column rows from 640px, full-width stacks below 480px
+   --------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .day-card {
+    padding: var(--space-3);
+  }
+
+  .activity {
+    grid-template-columns: 56px 1fr auto auto;
+    grid-template-areas: 'time body cost actions';
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .activity-cost {
+    text-align: right;
+  }
+
+  .activity-actions {
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  .activity-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .activity-form__grid .field:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 639px) {
+  .day-header .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirm-dialog__actions,
+  .confirm-dialog__actions .btn {
+    width: 100%;
+  }
+
+  .confirm-dialog__actions .btn {
+    flex: 1 1 auto;
+  }
+}
