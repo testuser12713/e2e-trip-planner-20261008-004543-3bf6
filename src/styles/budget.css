@@ -1,0 +1,161 @@
+/* =====================================================================
+   Budget page — component-scoped styles.
+   Imported once from src/pages/BudgetPage.tsx (src/styles/index.css stays
+   closed). Every value comes from a DESIGN.md token defined in :root; the
+   shared .page / .card / .btn classes are reused, nothing is duplicated.
+   ===================================================================== */
+
+.budget-meta {
+  margin-top: var(--space-0);
+  font-size: var(--size-body);
+  color: var(--color-muted);
+}
+
+/* ---------- Summary card ---------- */
+.budget-summary__label {
+  font-size: var(--size-small);
+  color: var(--color-muted);
+}
+
+.budget-summary__total {
+  margin-top: var(--space-0);
+  font-size: var(--size-display);
+  font-weight: var(--heading-weight);
+  color: var(--color-fg);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--line-height-tight);
+}
+
+.budget-divider {
+  height: 1px;
+  margin: var(--space-3) 0;
+  background: var(--color-border);
+}
+
+.budget-summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.budget-summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.budget-summary__category {
+  font-size: var(--size-body);
+  font-weight: 500;
+}
+
+.budget-summary__amount {
+  font-size: var(--size-body);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-note {
+  margin-top: var(--space-2);
+  font-size: var(--size-small);
+  color: var(--color-muted);
+}
+
+/* ---------- Chart card ---------- */
+.budget-chart-card {
+  margin-top: var(--space-4);
+}
+
+.budget-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.budget-chart__row {
+  display: grid;
+  grid-template-columns: 110px 1fr 72px;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.budget-chart__label {
+  font-size: var(--size-small);
+  color: var(--color-fg-soft);
+}
+
+.budget-chart__track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+}
+
+.budget-chart__bar {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 200ms ease-out;
+}
+
+/* The 4px minimum only applies to a non-zero bar: a zero bar stays at 0. */
+.budget-chart__bar--positive {
+  min-width: 4px;
+}
+
+.budget-chart__bar[data-category='travel'] {
+  background: var(--color-cat-travel);
+}
+
+.budget-chart__bar[data-category='accommodation'] {
+  background: var(--color-cat-accommodation);
+}
+
+.budget-chart__bar[data-category='food'] {
+  background: var(--color-cat-food);
+}
+
+.budget-chart__bar[data-category='activity'] {
+  background: var(--color-cat-activity);
+}
+
+.budget-chart__bar[data-category='shopping'] {
+  background: var(--color-cat-shopping);
+}
+
+.budget-chart__bar[data-category='other'] {
+  background: var(--color-cat-other);
+}
+
+.budget-chart__amount {
+  min-width: 72px;
+  font-size: var(--size-small);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Under 480px the label sits above the track and the amount ends that line. */
+@media (max-width: 479px) {
+  .budget-chart__row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'label amount'
+      'track track';
+    row-gap: var(--space-0);
+  }
+
+  .budget-chart__label {
+    grid-area: label;
+  }
+
+  .budget-chart__amount {
+    grid-area: amount;
+    min-width: 0;
+  }
+
+  .budget-chart__track {
+    grid-area: track;
+  }
+}
