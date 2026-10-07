@@ -4,7 +4,8 @@ Eine reine Frontend-Web-App zur Reiseplanung: Reisen anlegen und verwalten,
 pro Reise einen Tagesplan mit Aktivitäten (Uhrzeit, Ort, Kosten, Kategorie)
 pflegen, die Ausgaben je Kategorie im Budget überblicken und eine Packliste
 abhaken. Es gibt kein Backend — der komplette Zustand liegt im localStorage
-des Browsers unter dem einen Schlüssel `trip-planner.v1`.
+des Browsers unter dem einen Schlüssel aus Namespace `trip-planner` und
+Version `v1`.
 
 ## Tech-Stack
 
@@ -13,7 +14,7 @@ des Browsers unter dem einen Schlüssel `trip-planner.v1`.
 - **Build:** Vite
 - **Routing:** React Router (`react-router-dom`)
 - **Styling:** handgeschriebenes CSS mit CSS-Variablen, kein UI-Framework
-- **Persistenz:** localStorage (ein Schlüssel: `trip-planner.v1`)
+- **Persistenz:** localStorage (ein Schlüssel: Namespace `trip-planner` + Version `v1`)
 - **Tests:** Vitest + @testing-library/react + @testing-library/user-event + jsdom
 
 ## Installation

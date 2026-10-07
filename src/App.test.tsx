@@ -24,9 +24,16 @@ describe('App shell', () => {
     renderAt('/')
     expect(screen.getByRole('link', { name: 'Reiseplaner' })).toBeInTheDocument()
     expect(
+      screen.getByRole('navigation', { name: 'Hauptnavigation' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Reisen' })).toBeInTheDocument()
+    expect(
       screen.getByRole('heading', { level: 1, name: 'Deine Reisen' }),
     ).toBeInTheDocument()
     expect(screen.getByText('Noch keine Reisen')).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: 'Reise anlegen' }),
+    ).toBeInTheDocument()
   })
 
   it.each([
@@ -36,6 +43,9 @@ describe('App shell', () => {
   ])('renders %s inside the shared shell', (path, heading) => {
     renderAt(path)
     expect(screen.getByRole('link', { name: 'Reiseplaner' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('navigation', { name: 'Hauptnavigation' }),
+    ).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { level: 1, name: heading }),
     ).toBeInTheDocument()
