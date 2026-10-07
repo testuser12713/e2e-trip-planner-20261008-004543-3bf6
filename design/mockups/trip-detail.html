@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reiseplaner – Tagesplan</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header" data-od-id="app-header">
+    <div class="container">
+      <a class="wordmark" href="index.html">Reiseplaner</a>
+      <nav class="nav" aria-label="Reise-Navigation">
+        <a class="is-active" href="trip-detail.html" data-od-id="nav-day-plan">Tagesplan</a>
+        <a href="budget.html" data-od-id="nav-budget">Budget</a>
+        <a href="packing.html" data-od-id="nav-packing">Packliste</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page" data-od-id="trip-detail-page">
+    <a class="back-link" href="index.html" data-od-id="back-to-trips">← Alle Reisen</a>
+    <div class="page-header">
+      <div class="header-row">
+        <div>
+          <h1 data-od-id="trip-title">Sommerurlaub Italien</h1>
+          <div class="sub" data-od-id="trip-meta">Rom, Italien · 14.04.2025 – 20.04.2025</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="day-list" data-od-id="day-list">
+
+      <!-- Montag -->
+      <article class="card day-card" data-day="2025-04-14" data-od-id="day-2025-04-14">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Montag</h2>
+            <span class="day-date">14.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity" data-time="09:30" data-title="Flug nach Rom" data-location="Flughafen Frankfurt" data-cost="189,90" data-cat="travel" data-od-id="activity-flight">
+            <div class="activity-time">09:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Flug nach Rom</span><span class="badge badge-travel">Anreise</span></div>
+              <div class="activity-location">Flughafen Frankfurt</div>
+            </div>
+            <div class="activity-cost">189,90</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="13:00" data-title="Check-in Hotel" data-location="Via Veneto 12" data-cost="0,00" data-cat="accommodation" data-od-id="activity-checkin">
+            <div class="activity-time">13:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Check-in Hotel</span><span class="badge badge-accommodation">Unterkunft</span></div>
+              <div class="activity-location">Via Veneto 12</div>
+            </div>
+            <div class="activity-cost">0,00</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="19:30" data-title="Abendessen Trattoria" data-location="Trastevere" data-cost="45,50" data-cat="food" data-od-id="activity-dinner1">
+            <div class="activity-time">19:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Abendessen Trattoria</span><span class="badge badge-food">Essen</span></div>
+              <div class="activity-location">Trastevere</div>
+            </div>
+            <div class="activity-cost">45,50</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dienstag -->
+      <article class="card day-card" data-day="2025-04-15" data-od-id="day-2025-04-15">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Dienstag</h2>
+            <span class="day-date">15.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity" data-time="09:00" data-title="Kolosseum &amp; Forum" data-location="Piazza del Colosseo" data-cost="32,00" data-cat="activity" data-od-id="activity-colosseum">
+            <div class="activity-time">09:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Kolosseum &amp; Forum</span><span class="badge badge-activity">Aktivität</span></div>
+              <div class="activity-location">Piazza del Colosseo</div>
+            </div>
+            <div class="activity-cost">32,00</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="13:30" data-title="Mittagessen" data-location="Campo de&apos; Fiori" data-cost="28,40" data-cat="food" data-od-id="activity-lunch2">
+            <div class="activity-time">13:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Mittagessen</span><span class="badge badge-food">Essen</span></div>
+              <div class="activity-location">Campo de' Fiori</div>
+            </div>
+            <div class="activity-cost">28,40</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="16:00" data-title="Pantheon &amp; Trevi-Brunnen" data-location="Centro Storico" data-cost="0,00" data-cat="activity" data-od-id="activity-pantheon">
+            <div class="activity-time">16:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Pantheon &amp; Trevi-Brunnen</span><span class="badge badge-activity">Aktivität</span></div>
+              <div class="activity-location">Centro Storico</div>
+            </div>
+            <div class="activity-cost">0,00</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mittwoch (empty) -->
+      <article class="card day-card" data-day="2025-04-16" data-od-id="day-2025-04-16">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Mittwoch</h2>
+            <span class="day-date">16.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="empty-inline" data-empty>Noch keine Aktivitäten für diesen Tag.</div>
+        </div>
+      </article>
+
+      <!-- Donnerstag -->
+      <article class="card day-card" data-day="2025-04-17" data-od-id="day-2025-04-17">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Donnerstag</h2>
+            <span class="day-date">17.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity" data-time="09:30" data-title="Vatikanische Museen" data-location="Viale Vaticano" data-cost="25,00" data-cat="activity" data-od-id="activity-vatican">
+            <div class="activity-time">09:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Vatikanische Museen</span><span class="badge badge-activity">Aktivität</span></div>
+              <div class="activity-location">Viale Vaticano</div>
+            </div>
+            <div class="activity-cost">25,00</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="13:00" data-title="Mittagessen" data-location="Borgo Pio" data-cost="32,50" data-cat="food" data-od-id="activity-lunch4">
+            <div class="activity-time">13:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Mittagessen</span><span class="badge badge-food">Essen</span></div>
+              <div class="activity-location">Borgo Pio</div>
+            </div>
+            <div class="activity-cost">32,50</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="16:30" data-title="Souvenirs kaufen" data-location="Via del Corso" data-cost="64,20" data-cat="shopping" data-od-id="activity-shopping">
+            <div class="activity-time">16:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Souvenirs kaufen</span><span class="badge badge-shopping">Shopping</span></div>
+              <div class="activity-location">Via del Corso</div>
+            </div>
+            <div class="activity-cost">64,20</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Freitag -->
+      <article class="card day-card" data-day="2025-04-18" data-od-id="day-2025-04-18">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Freitag</h2>
+            <span class="day-date">18.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity" data-time="08:30" data-title="Tagesausflug Ostia Antica" data-location="Ostia" data-cost="39,50" data-cat="activity" data-od-id="activity-ostia">
+            <div class="activity-time">08:30</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Tagesausflug Ostia Antica</span><span class="badge badge-activity">Aktivität</span></div>
+              <div class="activity-location">Ostia</div>
+            </div>
+            <div class="activity-cost">39,50</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+          <div class="activity" data-time="19:00" data-title="Abendessen" data-location="Testaccio" data-cost="52,10" data-cat="food" data-od-id="activity-dinner5">
+            <div class="activity-time">19:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Abendessen</span><span class="badge badge-food">Essen</span></div>
+              <div class="activity-location">Testaccio</div>
+            </div>
+            <div class="activity-cost">52,10</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Samstag (empty) -->
+      <article class="card day-card" data-day="2025-04-19" data-od-id="day-2025-04-19">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Samstag</h2>
+            <span class="day-date">19.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="empty-inline" data-empty>Noch keine Aktivitäten für diesen Tag.</div>
+        </div>
+      </article>
+
+      <!-- Sonntag -->
+      <article class="card day-card" data-day="2025-04-20" data-od-id="day-2025-04-20">
+        <div class="day-header">
+          <div class="day-title">
+            <h2>Sonntag</h2>
+            <span class="day-date">20.04.2025</span>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="add">Aktivität hinzufügen</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity" data-time="15:00" data-title="Rückflug" data-location="Flughafen Fiumicino" data-cost="0,00" data-cat="travel" data-od-id="activity-returnflight">
+            <div class="activity-time">15:00</div>
+            <div class="activity-body">
+              <div class="activity-titleline"><span class="activity-title">Rückflug</span><span class="badge badge-travel">Anreise</span></div>
+              <div class="activity-location">Flughafen Fiumicino</div>
+            </div>
+            <div class="activity-cost">0,00</div>
+            <div class="activity-actions">
+              <button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>
+              <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Delete confirm dialog -->
+  <div class="overlay" id="delete-overlay" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <div class="dialog">
+      <h3 id="delete-title">Aktivität löschen?</h3>
+      <p id="delete-body">Diese Aktion kann nicht rückgängig gemacht werden.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-secondary" id="delete-cancel">Abbrechen</button>
+        <button type="button" class="btn btn-danger-solid" id="delete-confirm">Löschen</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var CATEGORIES = [
+        ['Anreise', 'travel'], ['Unterkunft', 'accommodation'], ['Essen', 'food'],
+        ['Aktivität', 'activity'], ['Shopping', 'shopping'], ['Sonstiges', 'other']
+      ];
+      var fmt = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2 });
+
+      function badgeClass(cat) { return 'badge badge-' + cat; }
+
+      function buildRow(data) {
+        var row = document.createElement('div');
+        row.className = 'activity';
+        row.setAttribute('data-time', data.time);
+        row.setAttribute('data-title', data.title);
+        row.setAttribute('data-location', data.location);
+        row.setAttribute('data-cost', data.cost);
+        row.setAttribute('data-cat', data.cat);
+        row.innerHTML =
+          '<div class="activity-time">' + data.time + '</div>' +
+          '<div class="activity-body">' +
+            '<div class="activity-titleline">' +
+              '<span class="activity-title">' + esc(data.title) + '</span>' +
+              '<span class="' + badgeClass(data.cat) + '">' + catLabel(data.cat) + '</span>' +
+            '</div>' +
+            '<div class="activity-location">' + esc(data.location) + '</div>' +
+          '</div>' +
+          '<div class="activity-cost">' + data.cost + '</div>' +
+          '<div class="activity-actions">' +
+            '<button type="button" class="btn btn-ghost btn-compact" data-action="edit">Bearbeiten</button>' +
+            '<button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>' +
+          '</div>';
+        bindRow(row);
+        return row;
+      }
+
+      function catLabel(cat) {
+        for (var i = 0; i < CATEGORIES.length; i++) {
+          if (CATEGORIES[i][1] === cat) return CATEGORIES[i][0];
+        }
+        return 'Sonstiges';
+      }
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function sortRows(list) {
+        var rows = Array.prototype.slice.call(list.querySelectorAll('.activity'));
+        rows.sort(function (a, b) {
+          return a.getAttribute('data-time') < b.getAttribute('data-time') ? -1 : 1;
+        });
+        rows.forEach(function (r) { list.appendChild(r); });
+      }
+
+      // ---- delete confirm ----
+      var deleteOverlay = document.getElementById('delete-overlay');
+      var pendingDelete = null;
+      document.getElementById('delete-cancel').addEventListener('click', function () { deleteOverlay.classList.remove('open'); });
+      deleteOverlay.addEventListener('click', function (e) { if (e.target === deleteOverlay) deleteOverlay.classList.remove('open'); });
+      document.getElementById('delete-confirm').addEventListener('click', function () {
+        if (pendingDelete) { pendingDelete.remove(); pendingDelete = null; }
+        deleteOverlay.classList.remove('open');
+        refreshEmptyState();
+      });
+
+      function refreshEmptyState() {
+        document.querySelectorAll('.day-card').forEach(function (day) {
+          var list = day.querySelector('.activity-list');
+          var hasRows = list.querySelectorAll('.activity').length > 0;
+          var empty = list.querySelector('[data-empty]');
+          if (hasRows && empty) empty.remove();
+          if (!hasRows && !empty) {
+            var e = document.createElement('div');
+            e.className = 'empty-inline';
+            e.setAttribute('data-empty', '');
+            e.textContent = 'Noch keine Aktivitäten für diesen Tag.';
+            list.appendChild(e);
+          }
+        });
+      }
+
+      function bindRow(row) {
+        row.querySelector('[data-action="delete"]').addEventListener('click', function () {
+          pendingDelete = row;
+          document.getElementById('delete-body').textContent =
+            '„' + row.getAttribute('data-title') + '“ wird gelöscht. Die zugehörigen Kosten werden ebenfalls entfernt.';
+          deleteOverlay.classList.add('open');
+        });
+        row.querySelector('[data-action="edit"]').addEventListener('click', function () {
+          openForm(row.closest('.day-card'), row);
+        });
+      }
+
+      // ---- inline form ----
+      function openForm(dayCard, targetRow) {
+        var existing = dayCard.querySelector('.activity-form');
+        if (existing) existing.remove();
+
+        var list = dayCard.querySelector('.activity-list');
+        var empty = list.querySelector('[data-empty]');
+        if (empty) empty.style.display = 'none';
+
+        var init = targetRow ? {
+          title: targetRow.getAttribute('data-title'),
+          time: targetRow.getAttribute('data-time'),
+          location: targetRow.getAttribute('data-location'),
+          cost: targetRow.getAttribute('data-cost').replace('.', '').replace(',', '.'),
+          cat: targetRow.getAttribute('data-cat')
+        } : { title: '', time: '', location: '', cost: '', cat: 'activity' };
+
+        var form = document.createElement('form');
+        form.className = 'activity-form';
+        form.setAttribute('novalidate', '');
+        var catOptions = CATEGORIES.map(function (c) {
+          return '<option value="' + c[1] + '"' + (c[1] === init.cat ? ' selected' : '') + '>' + c[0] + '</option>';
+        }).join('');
+        form.innerHTML =
+          '<div class="form-grid cols-2">' +
+            '<div class="field" data-field="title">' +
+              '<label for="af-title">Bezeichnung</label>' +
+              '<input class="input" id="af-title" type="text" value="' + esc(init.title) + '" required>' +
+              '<div class="field-error">Bitte eine Bezeichnung eingeben.</div>' +
+            '</div>' +
+            '<div class="field" data-field="time">' +
+              '<label for="af-time">Uhrzeit</label>' +
+              '<input class="input" id="af-time" type="time" value="' + esc(init.time) + '" required>' +
+              '<div class="hint">Uhrzeit HH:MM</div>' +
+              '<div class="field-error">Bitte eine Uhrzeit wählen.</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="form-grid cols-2">' +
+            '<div class="field" data-field="location">' +
+              '<label for="af-location">Ort</label>' +
+              '<input class="input" id="af-location" type="text" value="' + esc(init.location) + '">' +
+            '</div>' +
+            '<div class="field" data-field="cost">' +
+              '<label for="af-cost">Kosten</label>' +
+              '<input class="input" id="af-cost" type="number" inputmode="decimal" min="0" step="1" value="' + esc(init.cost) + '" required>' +
+              '<div class="hint">Betrag in Zahlen, ohne Währung</div>' +
+              '<div class="field-error" data-error-neg>Kosten dürfen nicht negativ sein.</div>' +
+              '<div class="field-error" data-error-required>Bitte Kosten eingeben.</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="field" data-field="cat">' +
+            '<label for="af-cat">Kategorie</label>' +
+            '<select class="input" id="af-cat">' + catOptions + '</select>' +
+          '</div>' +
+          '<div class="form-actions">' +
+            '<button type="submit" class="btn btn-primary">' + (targetRow ? 'Speichern' : 'Hinzufügen') + '</button>' +
+            '<button type="button" class="btn btn-secondary" data-action="cancel">Abbrechen</button>' +
+          '</div>';
+
+        if (targetRow) {
+          targetRow.parentNode.insertBefore(form, targetRow);
+          targetRow.style.display = 'none';
+        } else {
+          list.insertBefore(form, list.firstChild);
+        }
+
+        form.querySelector('[data-action="cancel"]').addEventListener('click', function () {
+          closeForm(dayCard, form, targetRow, empty);
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var title = form.querySelector('#af-title');
+          var time = form.querySelector('#af-time');
+          var cost = form.querySelector('#af-cost');
+          var cat = form.querySelector('#af-cat').value;
+          var ok = true;
+
+          form.querySelectorAll('.field').forEach(function (f) { f.classList.remove('invalid'); });
+
+          if (!title.value.trim()) { title.closest('.field').classList.add('invalid'); ok = false; }
+          if (!time.value) { time.closest('.field').classList.add('invalid'); ok = false; }
+          var costVal = cost.value;
+          var costNum = costVal === '' ? null : Number(costVal.replace(',', '.'));
+          if (costVal === '') { cost.closest('.field').classList.add('invalid'); cost.closest('.field').querySelector('[data-error-required]').style.display = 'block'; cost.closest('.field').querySelector('[data-error-neg]').style.display = 'none'; ok = false; }
+          else if (costNum < 0) { cost.closest('.field').classList.add('invalid'); cost.closest('.field').querySelector('[data-error-neg]').style.display = 'block'; cost.closest('.field').querySelector('[data-error-required]').style.display = 'none'; ok = false; }
+          else { cost.closest('.field').querySelector('[data-error-neg]').style.display = 'none'; cost.closest('.field').querySelector('[data-error-required]').style.display = 'none'; }
+
+          if (!ok) return;
+
+          var data = {
+            title: title.value.trim(),
+            time: time.value,
+            location: form.querySelector('#af-location').value.trim() || '—',
+            cost: fmt.format(costNum),
+            cat: cat
+          };
+
+          var row = buildRow(data);
+          if (targetRow) {
+            targetRow.parentNode.replaceChild(row, targetRow);
+          } else {
+            list.appendChild(row);
+          }
+          closeForm(dayCard, form, targetRow, empty);
+          sortRows(list);
+          refreshEmptyState();
+        });
+      }
+
+      function closeForm(dayCard, form, targetRow, empty) {
+        form.remove();
+        if (targetRow) targetRow.style.display = '';
+        if (empty) empty.style.display = '';
+      }
+
+      document.querySelectorAll('.day-card').forEach(function (day) {
+        day.querySelector('[data-action="add"]').addEventListener('click', function () {
+          openForm(day, null);
+        });
+        day.querySelectorAll('.activity').forEach(bindRow);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') deleteOverlay.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>

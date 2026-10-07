@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reiseplaner – Budget</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header" data-od-id="app-header">
+    <div class="container">
+      <a class="wordmark" href="index.html">Reiseplaner</a>
+      <nav class="nav" aria-label="Reise-Navigation">
+        <a href="trip-detail.html" data-od-id="nav-day-plan">Tagesplan</a>
+        <a class="is-active" href="budget.html" data-od-id="nav-budget">Budget</a>
+        <a href="packing.html" data-od-id="nav-packing">Packliste</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page" data-od-id="budget-page">
+    <a class="back-link" href="index.html" data-od-id="back-to-trips">← Alle Reisen</a>
+    <div class="page-header">
+      <h1 data-od-id="budget-title">Budget</h1>
+      <div class="sub" data-od-id="budget-meta">Sommerurlaub Italien · Rom, Italien</div>
+    </div>
+
+    <section class="card" data-od-id="budget-summary-card">
+      <div class="budget-total-label">Gesamtsumme</div>
+      <div class="budget-total" data-od-id="budget-total">1.376,40</div>
+      <div class="divider"></div>
+      <div class="category-rows">
+        <div class="category-row"><span class="category-label">Anreise</span><span class="category-amount">189,90</span></div>
+        <div class="category-row"><span class="category-label">Unterkunft</span><span class="category-amount">780,00</span></div>
+        <div class="category-row"><span class="category-label">Essen</span><span class="category-amount">245,80</span></div>
+        <div class="category-row"><span class="category-label">Aktivität</span><span class="category-amount">96,50</span></div>
+        <div class="category-row"><span class="category-label">Shopping</span><span class="category-amount">64,20</span></div>
+        <div class="category-row"><span class="category-label">Sonstiges</span><span class="category-amount">0,00</span></div>
+      </div>
+    </section>
+
+    <section class="card mt-3" data-od-id="budget-chart-card">
+      <h3 data-od-id="chart-title">Kosten nach Kategorie</h3>
+      <div class="chart" data-od-id="budget-chart">
+        <div class="chart-row">
+          <span class="chart-label">Anreise</span>
+          <div class="chart-track"><div class="chart-bar bar-travel" style="width: 24.35%;"></div></div>
+          <span class="chart-amount">189,90</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Unterkunft</span>
+          <div class="chart-track"><div class="chart-bar bar-accommodation" style="width: 100%;"></div></div>
+          <span class="chart-amount">780,00</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Essen</span>
+          <div class="chart-track"><div class="chart-bar bar-food" style="width: 31.51%;"></div></div>
+          <span class="chart-amount">245,80</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Aktivität</span>
+          <div class="chart-track"><div class="chart-bar bar-activity" style="width: 12.37%;"></div></div>
+          <span class="chart-amount">96,50</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Shopping</span>
+          <div class="chart-track"><div class="chart-bar bar-shopping" style="width: 8.23%;"></div></div>
+          <span class="chart-amount">64,20</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Sonstiges</span>
+          <div class="chart-track"><div class="chart-bar bar-other" style="width: 0%;"></div></div>
+          <span class="chart-amount">0,00</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
