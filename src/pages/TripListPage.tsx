@@ -8,11 +8,14 @@ export default function TripListPage() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1 className="page-title">Meine Reisen</h1>
+        <h1 className="page-title">Deine Reisen</h1>
       </header>
 
       {trips.length === 0 ? (
-        <section className="empty-state" aria-labelledby="trip-list-empty-title">
+        <section
+          className="card empty-state"
+          aria-labelledby="trip-list-empty-title"
+        >
           <div className="empty-state__icon" aria-hidden="true">
             ✈
           </div>

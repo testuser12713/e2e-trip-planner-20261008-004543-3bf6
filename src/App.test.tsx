@@ -24,7 +24,7 @@ describe('App shell', () => {
     renderAt('/')
     expect(screen.getByRole('link', { name: 'Reiseplaner' })).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Meine Reisen' }),
+      screen.getByRole('heading', { level: 1, name: 'Deine Reisen' }),
     ).toBeInTheDocument()
     expect(screen.getByText('Noch keine Reisen')).toBeInTheDocument()
   })
@@ -46,7 +46,7 @@ describe('App shell', () => {
     renderAt('/trips/abc')
     await user.click(screen.getByRole('link', { name: 'Reiseplaner' }))
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Meine Reisen' }),
+      screen.getByRole('heading', { level: 1, name: 'Deine Reisen' }),
     ).toBeInTheDocument()
   })
 })

@@ -555,6 +555,10 @@ button {
 }
 
 @media (max-width: 480px) {
+  .app-wordmark {
+    font-size: 15px;
+  }
+
   .form-actions .btn,
   .form-actions {
     width: 100%;

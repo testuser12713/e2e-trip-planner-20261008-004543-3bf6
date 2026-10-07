@@ -1,7 +1,7 @@
 import type { Trip } from './types'
 
-/** The single localStorage key for the whole app state (AC-02). */
-export const STORAGE_KEY = 'trip-planner.v1'
+/** The single localStorage namespace for the whole app state (AC-02). */
+export const STORAGE_NAMESPACE = 'trip-planner.v1'
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
@@ -15,7 +15,7 @@ export function loadTrips(): Trip[] {
   if (typeof localStorage === 'undefined') return []
   let raw: string | null = null
   try {
-    raw = localStorage.getItem(STORAGE_KEY)
+    raw = localStorage.getItem(STORAGE_NAMESPACE)
   } catch {
     return []
   }
@@ -33,7 +33,7 @@ export function loadTrips(): Trip[] {
 export function saveTrips(trips: Trip[]): void {
   if (typeof localStorage === 'undefined') return
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(trips))
+    localStorage.setItem(STORAGE_NAMESPACE, JSON.stringify(trips))
   } catch {
     // Storage can be full or unavailable (private mode). The app stays usable.
   }
