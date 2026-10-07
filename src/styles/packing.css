@@ -1,0 +1,126 @@
+/* =====================================================================
+   Packing list (Packliste) — component-scoped styles.
+
+   index.css is the shared sheet and stays untouched; this file only adds
+   the rules the shared classes lack: the counter line with its accent
+   progress track, the add row, the item list with 1px dividers and the
+   per-row delete placement, and the checked-row marker. Every value comes
+   from the DESIGN.md :root tokens — no ad-hoc colours or pixel sizes.
+   ===================================================================== */
+
+/* Heading block: h1 with the trip meta stacked beneath it. */
+.packing-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0);
+}
+
+.packing-meta {
+  color: var(--color-muted);
+  font-size: var(--size-body);
+}
+
+/* Counter line 'X von Y gepackt' + accent progress track. */
+.packing-summary {
+  margin-bottom: var(--space-1);
+}
+
+.packing-counter {
+  font-size: var(--size-body);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.packing-progress {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.packing-progress__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transition: width 200ms ease-out;
+}
+
+/* Add row: labelled text input + primary 'Hinzufügen' button. */
+.packing-add {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+.packing-add__button {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .packing-add {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .packing-add__field {
+    flex: 1;
+  }
+
+  .packing-add__button {
+    width: auto;
+    flex: none;
+  }
+}
+
+/* Item list: plain list with 1px dividers, no card per item. */
+.packing-list {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.packing-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-0) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.packing-item:first-child {
+  border-top: none;
+}
+
+.packing-item__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-height: 44px;
+  padding: var(--space-1) 0;
+  cursor: pointer;
+  font-size: var(--size-body);
+  color: var(--color-fg);
+}
+
+.packing-item__checkbox {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  accent-color: var(--color-accent);
+}
+
+/* Checked marker: strike-through + muted colour, in addition to the
+   checkbox state — never colour alone. */
+.packing-item--checked .packing-item__text {
+  text-decoration: line-through;
+  color: var(--color-muted);
+}
+
+.packing-item__delete {
+  flex: none;
+}
