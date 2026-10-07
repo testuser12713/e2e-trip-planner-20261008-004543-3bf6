@@ -1,14 +1,26 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import TripForm from '../components/TripForm'
+import TripListItem from '../components/TripListItem'
 import { useTripStore } from '../store/TripStore'
-import { formatDate } from '../lib/format'
+import '../styles/trip-list.css'
 
 export default function TripListPage() {
   const { trips } = useTripStore()
+  const [formOpen, setFormOpen] = useState(false)
 
   return (
     <div className="page">
       <header className="page-header">
         <h1 className="page-title">Deine Reisen</h1>
+        <button
+          type="button"
+          className="btn btn--primary"
+          aria-haspopup="dialog"
+          aria-expanded={formOpen}
+          onClick={() => setFormOpen(true)}
+        >
+          Neue Reise anlegen
+        </button>
       </header>
 
       {trips.length === 0 ? (
@@ -29,30 +41,22 @@ export default function TripListPage() {
           <button
             type="button"
             className="btn btn--primary"
-            disabled
-            aria-disabled="true"
+            onClick={() => setFormOpen(true)}
           >
             Reise anlegen
           </button>
-          <p className="empty-state__note">
-            Das Formular zum Anlegen wird in einem späteren Schritt ergänzt.
-          </p>
         </section>
       ) : (
         <ul className="trip-list">
           {trips.map((trip) => (
-            <li key={trip.id} className="trip-list__item">
-              <Link to={`/trips/${trip.id}`} className="trip-list__link">
-                <span className="trip-list__name">{trip.name}</span>
-                <span className="trip-list__meta">
-                  {trip.destination} · {formatDate(trip.startDate)} –{' '}
-                  {formatDate(trip.endDate)}
-                </span>
-              </Link>
+            <li key={trip.id} className="trip-list__row">
+              <TripListItem trip={trip} />
             </li>
           ))}
         </ul>
       )}
+
+      {formOpen && <TripForm onClose={() => setFormOpen(false)} />}
     </div>
   )
 }

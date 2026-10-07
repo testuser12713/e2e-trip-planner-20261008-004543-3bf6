@@ -1,0 +1,220 @@
+/* Component-scoped styles for the trip list page.
+   Every value comes from the DESIGN.md :root tokens in index.css; the shared
+   stylesheet (index.css) is closed and is not edited. Imported once from
+   TripListPage.tsx. */
+
+/* ---------------------------------------------------------------------
+   Trip card — the whole card is a link, the actions float above it
+   --------------------------------------------------------------------- */
+.trip-list__row {
+  list-style: none;
+}
+
+.trip-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--color-shadow-card);
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.trip-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 2px 6px rgba(27, 36, 48, 0.08);
+}
+
+.trip-link {
+  display: flex;
+  min-height: 64px;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-0);
+  color: var(--color-fg);
+}
+
+/* Large hit area: the pseudo-element covers the whole card. */
+.trip-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.trip-link:hover {
+  text-decoration: none;
+}
+
+.trip-link:focus-visible {
+  outline: none;
+}
+
+.trip-link:focus-visible::after {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.trip-link__name {
+  font-size: var(--size-h2);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.trip-link__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.trip-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.trip-actions .btn {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------
+   Inline rename
+   --------------------------------------------------------------------- */
+.trip-rename {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.trip-rename__field {
+  flex: 1 1 240px;
+}
+
+.trip-rename__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.trip-rename .field__error::before,
+.trip-dialog .field__error::before {
+  content: '⚠ ';
+}
+
+/* ---------------------------------------------------------------------
+   Create-trip dialog
+   --------------------------------------------------------------------- */
+.trip-overlay,
+.trip-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  overflow-y: auto;
+  background: var(--color-overlay);
+}
+
+.trip-dialog {
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(27, 36, 48, 0.18);
+}
+
+.trip-dialog__title {
+  margin-bottom: var(--space-3);
+  font-size: var(--size-h2);
+}
+
+.trip-dialog .form-row {
+  margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------
+   Confirm-delete dialog
+   --------------------------------------------------------------------- */
+.trip-confirm-dialog {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(27, 36, 48, 0.18);
+}
+
+.trip-confirm-dialog__title {
+  font-size: var(--size-h2);
+}
+
+.trip-confirm-dialog__body {
+  margin-top: var(--space-1);
+  color: var(--color-fg-soft);
+}
+
+.trip-confirm-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------
+   Responsive — actions move beside the title from 640px, full-width stacks
+   below 480px
+   --------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .trip-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .trip-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  .trip-actions .btn {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .trip-rename {
+    flex-direction: column;
+  }
+
+  .trip-rename__field {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .trip-rename__actions,
+  .trip-rename__actions .btn,
+  .trip-confirm-dialog__actions,
+  .trip-confirm-dialog__actions .btn {
+    width: 100%;
+  }
+
+  .trip-rename__actions .btn,
+  .trip-confirm-dialog__actions .btn {
+    flex: 1 1 auto;
+  }
+}
