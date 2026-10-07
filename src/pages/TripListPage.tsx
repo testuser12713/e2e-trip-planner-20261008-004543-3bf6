@@ -1,50 +1,70 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { useTripStore } from '../store/TripStore'
-import { formatDate } from '../lib/format'
+import TripForm from '../components/TripForm'
+import TripListItem from '../components/TripListItem'
+import type { TripInput } from '../types'
 
 export default function TripListPage() {
-  const { trips } = useTripStore()
+  const { trips, createTrip } = useTripStore()
+  const [showForm, setShowForm] = useState(false)
+
+  function handleCreate(input: TripInput) {
+    createTrip(input)
+    setShowForm(false)
+  }
 
   return (
     <div className="page">
       <header className="page-header">
         <h1 className="page-title">Meine Reisen</h1>
+        <button
+          type="button"
+          className="btn btn--primary"
+          onClick={() => setShowForm((open) => !open)}
+          aria-expanded={showForm}
+        >
+          Neue Reise anlegen
+        </button>
       </header>
 
+      {showForm && (
+        <div style={{ marginBottom: 'var(--space-4)' }}>
+          <TripForm
+            onSubmit={handleCreate}
+            onCancel={() => setShowForm(false)}
+          />
+        </div>
+      )}
+
       {trips.length === 0 ? (
-        <section className="empty-state" aria-labelledby="trip-list-empty-title">
-          <div className="empty-state__icon" aria-hidden="true">
-            ✈
-          </div>
-          <h2 id="trip-list-empty-title" className="empty-state__title">
-            Noch keine Reisen
-          </h2>
-          <p className="empty-state__text">
-            Lege deine erste Reise an, um Tagesplan, Budget und Packliste zu
-            planen.
-          </p>
-          <button
-            type="button"
-            className="btn btn--primary"
-            disabled
-            aria-disabled="true"
-            title="Diese Funktion folgt in einem späteren Schritt."
+        showForm ? null : (
+          <section
+            className="empty-state card"
+            aria-labelledby="trip-list-empty-title"
           >
-            Reise anlegen
-          </button>
-        </section>
+            <div className="empty-state__icon" aria-hidden="true">
+              ✈
+            </div>
+            <h2 id="trip-list-empty-title" className="empty-state__title">
+              Noch keine Reisen
+            </h2>
+            <p className="empty-state__text">
+              Lege deine erste Reise an, um Tagesplan, Budget und Packliste zu
+              planen.
+            </p>
+            <button
+              type="button"
+              className="btn btn--primary"
+              onClick={() => setShowForm(true)}
+            >
+              Reise anlegen
+            </button>
+          </section>
+        )
       ) : (
-        <ul className="trip-list">
+        <ul className="trip-list" id="trip-list">
           {trips.map((trip) => (
-            <li key={trip.id} className="trip-list__item">
-              <Link to={`/trips/${trip.id}`} className="trip-list__link">
-                <span className="trip-list__name">{trip.name}</span>
-                <span className="trip-list__meta">
-                  {trip.destination} · {formatDate(trip.startDate)} –{' '}
-                  {formatDate(trip.endDate)}
-                </span>
-              </Link>
-            </li>
+            <TripListItem key={trip.id} trip={trip} />
           ))}
         </ul>
       )}
