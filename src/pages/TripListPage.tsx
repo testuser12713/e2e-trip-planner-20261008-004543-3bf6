@@ -31,10 +31,12 @@ export default function TripListPage() {
             className="btn btn--primary"
             disabled
             aria-disabled="true"
-            title="Diese Funktion folgt in einem späteren Schritt."
           >
             Reise anlegen
           </button>
+          <p className="empty-state__note">
+            Das Formular zum Anlegen wird in einem späteren Schritt ergänzt.
+          </p>
         </section>
       ) : (
         <ul className="trip-list">
