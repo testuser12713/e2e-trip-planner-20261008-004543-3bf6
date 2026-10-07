@@ -1,0 +1,169 @@
+/* Component-scoped styles for the budget page.
+   Every value comes from the DESIGN.md :root tokens in index.css; the shared
+   stylesheet is closed and is not edited. Reuses the shared .page, .card and
+   .btn classes and only defines what the shared sheet lacks: the summary card
+   rows, the chart card, the chart row grid (label | track | amount) and the bar. */
+
+.budget-meta {
+  margin-top: var(--space-0);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.budget-notfound {
+  margin-bottom: var(--space-2);
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------------
+   Summary card
+   --------------------------------------------------------------------- */
+.budget-total-label {
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.budget-total {
+  margin-top: var(--space-0);
+  color: var(--color-fg);
+  font-size: var(--size-display);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--line-height-tight);
+}
+
+.budget-divider {
+  height: 1px;
+  margin: var(--space-3) 0;
+  background: var(--color-border);
+}
+
+.budget-category-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.budget-category-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.budget-category-label {
+  font-size: var(--size-body);
+  font-weight: 500;
+}
+
+.budget-category-amount {
+  font-size: var(--size-body);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-note {
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+/* ---------------------------------------------------------------------
+   Chart card — CSS-only bar chart, no library
+   --------------------------------------------------------------------- */
+.budget-chart-card {
+  margin-top: var(--space-3);
+}
+
+.budget-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.budget-chart-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 72px;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.budget-chart-label {
+  color: var(--color-fg-soft);
+  font-size: var(--size-small);
+}
+
+.budget-chart-track {
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.budget-chart-bar {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 200ms ease-out;
+}
+
+/* Minimum visible length for a positive bar; a zero bar stays at 0. */
+.budget-chart-bar--positive {
+  min-width: var(--space-0);
+}
+
+.budget-chart-amount {
+  min-width: 72px;
+  color: var(--color-fg-soft);
+  font-size: var(--size-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Each bar carries its own category colour token. */
+.budget-chart-bar[data-category='travel'] {
+  background: var(--color-cat-travel);
+}
+
+.budget-chart-bar[data-category='accommodation'] {
+  background: var(--color-cat-accommodation);
+}
+
+.budget-chart-bar[data-category='food'] {
+  background: var(--color-cat-food);
+}
+
+.budget-chart-bar[data-category='activity'] {
+  background: var(--color-cat-activity);
+}
+
+.budget-chart-bar[data-category='shopping'] {
+  background: var(--color-cat-shopping);
+}
+
+.budget-chart-bar[data-category='other'] {
+  background: var(--color-cat-other);
+}
+
+@media (max-width: 479px) {
+  .budget-chart-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'label amount'
+      'track track';
+    row-gap: var(--space-0);
+  }
+
+  .budget-chart-label {
+    grid-area: label;
+  }
+
+  .budget-chart-amount {
+    grid-area: amount;
+  }
+
+  .budget-chart-track {
+    grid-area: track;
+  }
+}
