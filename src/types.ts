@@ -8,6 +8,8 @@ export type Category =
 
 export interface Activity {
   id: string
+  /** 'YYYY-MM-DD' — the trip day this activity belongs to. */
+  date: string
   title: string
   /** 24h time, 'HH:MM' */
   time: string
@@ -41,7 +43,7 @@ export type TripInput = Pick<
 
 export type ActivityInput = Pick<
   Activity,
-  'title' | 'time' | 'location' | 'cost' | 'category'
+  'date' | 'title' | 'time' | 'location' | 'cost' | 'category'
 >
 
 export const CATEGORY_LABELS: Record<Category, string> = {
