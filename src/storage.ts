@@ -1,10 +1,10 @@
 import type { Trip } from './types'
 
-const APP_SLUG = 'trip' + '-planner'
-const APP_VERSION = 'v1'
-
-/** The single localStorage namespace for the whole app state (AC-02). */
-export const STORAGE_NAMESPACE = `${APP_SLUG}.${APP_VERSION}`
+/**
+ * The single localStorage namespace for the whole app state (AC-02).
+ * A public storage identifier, not a credential — hence the inline allow.
+ */
+export const STORAGE_NAMESPACE = 'trip-planner.v1' // gitleaks:allow
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null
