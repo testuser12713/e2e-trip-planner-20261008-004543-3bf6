@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reiseplaner – Packliste</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header" data-od-id="app-header">
+    <div class="container">
+      <a class="wordmark" href="index.html">Reiseplaner</a>
+      <nav class="nav" aria-label="Reise-Navigation">
+        <a href="trip-detail.html" data-od-id="nav-day-plan">Tagesplan</a>
+        <a href="budget.html" data-od-id="nav-budget">Budget</a>
+        <a class="is-active" href="packing.html" data-od-id="nav-packing">Packliste</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page" data-od-id="packing-page">
+    <a class="back-link" href="index.html" data-od-id="back-to-trips">← Alle Reisen</a>
+    <div class="page-header">
+      <h1 data-od-id="packing-title">Packliste</h1>
+      <div class="sub" data-od-id="packing-meta">Sommerurlaub Italien · Rom, Italien</div>
+    </div>
+
+    <section class="card" data-od-id="packing-card">
+      <div class="packing-summary">
+        <span class="packing-counter" id="packing-counter" data-od-id="packing-counter">3 von 6 gepackt</span>
+      </div>
+      <div class="progress" aria-hidden="true">
+        <div class="progress-fill" id="progress-fill" style="width: 50%;"></div>
+      </div>
+
+      <form class="packing-add" id="packing-add-form" novalidate>
+        <div class="field mb-0" id="packing-add-field">
+          <label for="packing-add-input" class="sr-only">Gegenstand hinzufügen</label>
+          <input class="input" id="packing-add-input" type="text" placeholder="Gegenstand hinzufügen …" required>
+          <div class="field-error" id="packing-add-error">Bitte einen Gegenstand eingeben.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" data-od-id="packing-add-button">Hinzufügen</button>
+      </form>
+
+      <div class="packing-list" id="packing-list" data-od-id="packing-list">
+        <div class="packing-item checked" data-od-id="packing-item-passport">
+          <label class="item-label">
+            <input type="checkbox" checked>
+            <span>Reisepass</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+        <div class="packing-item checked" data-od-id="packing-item-sunscreen">
+          <label class="item-label">
+            <input type="checkbox" checked>
+            <span>Sonnencreme</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+        <div class="packing-item" data-od-id="packing-item-swimwear">
+          <label class="item-label">
+            <input type="checkbox">
+            <span>Badesachen</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+        <div class="packing-item checked" data-od-id="packing-item-charger">
+          <label class="item-label">
+            <input type="checkbox" checked>
+            <span>Ladegerät</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+        <div class="packing-item" data-od-id="packing-item-guidebook">
+          <label class="item-label">
+            <input type="checkbox">
+            <span>Reiseführer Rom</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+        <div class="packing-item" data-od-id="packing-item-hikingshoes">
+          <label class="item-label">
+            <input type="checkbox">
+            <span>Wanderschuhe</span>
+          </label>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var list = document.getElementById('packing-list');
+      var counter = document.getElementById('packing-counter');
+      var fill = document.getElementById('progress-fill');
+      var form = document.getElementById('packing-add-form');
+      var field = document.getElementById('packing-add-field');
+      var input = document.getElementById('packing-add-input');
+
+      function update() {
+        var items = list.querySelectorAll('.packing-item');
+        var total = items.length;
+        var checked = list.querySelectorAll('.packing-item.checked').length;
+        counter.textContent = checked + ' von ' + total + ' gepackt';
+        fill.style.width = (total === 0 ? 0 : (checked / total) * 100) + '%';
+      }
+
+      function bindItem(item) {
+        var checkbox = item.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('change', function () {
+          item.classList.toggle('checked', checkbox.checked);
+          update();
+        });
+        item.querySelector('[data-action="delete"]').addEventListener('click', function () {
+          item.remove();
+          update();
+        });
+      }
+
+      list.querySelectorAll('.packing-item').forEach(bindItem);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = input.value.trim();
+        field.classList.remove('invalid');
+        if (!value) { field.classList.add('invalid'); return; }
+
+        var item = document.createElement('div');
+        item.className = 'packing-item';
+        item.innerHTML =
+          '<label class="item-label">' +
+            '<input type="checkbox">' +
+            '<span>' + escapeHtml(value) + '</span>' +
+          '</label>' +
+          '<button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>';
+        list.appendChild(item);
+        bindItem(item);
+        input.value = '';
+        update();
+      });
+
+      function escapeHtml(s) {
+        return s.replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

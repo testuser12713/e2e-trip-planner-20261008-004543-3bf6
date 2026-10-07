@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reiseplaner – Reiseliste</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header" data-od-id="app-header">
+    <div class="container">
+      <a class="wordmark" href="index.html">Reiseplaner</a>
+      <nav class="nav" aria-label="Hauptnavigation"></nav>
+    </div>
+  </header>
+
+  <main class="container page" data-od-id="trip-list-page">
+    <div class="page-header">
+      <div class="header-row">
+        <div>
+          <h1 data-od-id="trip-list-title">Deine Reisen</h1>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn btn-primary" id="open-create" data-od-id="create-trip-button">Reise anlegen</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="trip-list" id="trip-list" data-od-id="trip-list">
+      <article class="card trip-card" data-trip-id="t1" data-od-id="trip-card-italien">
+        <a class="trip-link" href="trip-detail.html" data-od-id="trip-link-italien">
+          <div class="trip-name" data-od-id="trip-name-italien">Sommerurlaub Italien</div>
+          <div class="trip-meta">
+            <span class="loc" aria-hidden="true">📍</span>
+            <span>Rom, Italien</span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span>14.04.2025 – 20.04.2025</span>
+          </div>
+        </a>
+        <div class="trip-actions">
+          <button type="button" class="btn btn-ghost btn-compact" data-action="rename" data-od-id="rename-italien">Umbenennen</button>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete" data-od-id="delete-italien">Löschen</button>
+        </div>
+      </article>
+
+      <article class="card trip-card" data-trip-id="t2" data-od-id="trip-card-muenchen">
+        <a class="trip-link" href="trip-detail.html" data-od-id="trip-link-muenchen">
+          <div class="trip-name" data-od-id="trip-name-muenchen">Wochenende München</div>
+          <div class="trip-meta">
+            <span class="loc" aria-hidden="true">📍</span>
+            <span>München, Deutschland</span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span>23.05.2025 – 25.05.2025</span>
+          </div>
+        </a>
+        <div class="trip-actions">
+          <button type="button" class="btn btn-ghost btn-compact" data-action="rename" data-od-id="rename-muenchen">Umbenennen</button>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete" data-od-id="delete-muenchen">Löschen</button>
+        </div>
+      </article>
+
+      <article class="card trip-card" data-trip-id="t3" data-od-id="trip-card-allgaeu">
+        <a class="trip-link" href="trip-detail.html" data-od-id="trip-link-allgaeu">
+          <div class="trip-name" data-od-id="trip-name-allgaeu">Herbstwanderung Allgäu</div>
+          <div class="trip-meta">
+            <span class="loc" aria-hidden="true">📍</span>
+            <span>Oberstdorf, Deutschland</span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span>12.09.2025 – 15.09.2025</span>
+          </div>
+        </a>
+        <div class="trip-actions">
+          <button type="button" class="btn btn-ghost btn-compact" data-action="rename" data-od-id="rename-allgaeu">Umbenennen</button>
+          <button type="button" class="btn btn-danger btn-compact" data-action="delete" data-od-id="delete-allgaeu">Löschen</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Create trip dialog -->
+  <div class="overlay" id="create-overlay" role="dialog" aria-modal="true" aria-labelledby="create-title">
+    <form class="dialog" id="create-form" novalidate>
+      <h3 id="create-title">Neue Reise anlegen</h3>
+      <div class="field" data-field="name">
+        <label for="create-name">Name</label>
+        <input class="input" id="create-name" type="text" placeholder="z.&nbsp;B. Sommerurlaub Italien" required>
+        <div class="field-error" id="create-name-error">Bitte einen Namen eingeben.</div>
+      </div>
+      <div class="field" data-field="destination">
+        <label for="create-destination">Ziel</label>
+        <input class="input" id="create-destination" type="text" placeholder="z.&nbsp;B. Rom, Italien" required>
+        <div class="field-error" id="create-destination-error">Bitte ein Ziel eingeben.</div>
+      </div>
+      <div class="form-grid cols-2">
+        <div class="field" data-field="start">
+          <label for="create-start">Startdatum</label>
+          <input class="input" id="create-start" type="date" required>
+          <div class="hint">TT.MM.JJJJ</div>
+          <div class="field-error" id="create-start-error">Bitte ein Startdatum wählen.</div>
+        </div>
+        <div class="field" data-field="end">
+          <label for="create-end">Enddatum</label>
+          <input class="input" id="create-end" type="date" required>
+          <div class="hint">TT.MM.JJJJ</div>
+          <div class="field-error" id="create-end-error">Bitte ein Enddatum wählen.</div>
+        </div>
+      </div>
+      <div class="field-error" id="create-range-error">Das Enddatum muss nach dem Startdatum liegen.</div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Speichern</button>
+        <button type="button" class="btn btn-secondary" id="create-cancel">Abbrechen</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Delete confirm dialog -->
+  <div class="overlay" id="delete-overlay" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+    <div class="dialog">
+      <h3 id="delete-title">Reise löschen?</h3>
+      <p id="delete-body">Diese Aktion kann nicht rückgängig gemacht werden.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-secondary" id="delete-cancel">Abbrechen</button>
+        <button type="button" class="btn btn-danger-solid" id="delete-confirm">Löschen</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var fmt = new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2 });
+      var createOverlay = document.getElementById('create-overlay');
+      var createForm = document.getElementById('create-form');
+      var deleteOverlay = document.getElementById('delete-overlay');
+      var list = document.getElementById('trip-list');
+      var rangeError = document.getElementById('create-range-error');
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        var parts = iso.split('-');
+        return parts[2] + '.' + parts[1] + '.' + parts[0];
+      }
+
+      function setFieldError(field, on) {
+        field.classList.toggle('invalid', on);
+      }
+
+      function clearErrors() {
+        createForm.querySelectorAll('.field').forEach(function (f) { f.classList.remove('invalid'); });
+        rangeError.style.display = 'none';
+      }
+
+      document.getElementById('open-create').addEventListener('click', function () {
+        clearErrors();
+        createForm.reset();
+        createOverlay.classList.add('open');
+        document.getElementById('create-name').focus();
+      });
+
+      document.getElementById('create-cancel').addEventListener('click', function () {
+        createOverlay.classList.remove('open');
+      });
+
+      createOverlay.addEventListener('click', function (e) {
+        if (e.target === createOverlay) createOverlay.classList.remove('open');
+      });
+
+      createForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearErrors();
+        var name = document.getElementById('create-name');
+        var dest = document.getElementById('create-destination');
+        var start = document.getElementById('create-start');
+        var end = document.getElementById('create-end');
+        var ok = true;
+        if (!name.value.trim()) { setFieldError(name.closest('.field'), true); ok = false; }
+        if (!dest.value.trim()) { setFieldError(dest.closest('.field'), true); ok = false; }
+        if (!start.value) { setFieldError(start.closest('.field'), true); ok = false; }
+        if (!end.value) { setFieldError(end.closest('.field'), true); ok = false; }
+        if (start.value && end.value && end.value < start.value) {
+          rangeError.style.display = 'block'; ok = false;
+        }
+        if (!ok) return;
+
+        var card = document.createElement('article');
+        card.className = 'card trip-card';
+        var id = 't' + Date.now();
+        card.setAttribute('data-trip-id', id);
+        card.innerHTML =
+          '<a class="trip-link" href="trip-detail.html">' +
+            '<div class="trip-name">' + escapeHtml(name.value.trim()) + '</div>' +
+            '<div class="trip-meta"><span class="loc" aria-hidden="true">📍</span>' +
+              '<span>' + escapeHtml(dest.value.trim()) + '</span>' +
+              '<span class="sep" aria-hidden="true">·</span>' +
+              '<span>' + formatDate(start.value) + ' – ' + formatDate(end.value) + '</span>' +
+            '</div>' +
+          '</a>' +
+          '<div class="trip-actions">' +
+            '<button type="button" class="btn btn-ghost btn-compact" data-action="rename">Umbenennen</button>' +
+            '<button type="button" class="btn btn-danger btn-compact" data-action="delete">Löschen</button>' +
+          '</div>';
+        list.appendChild(card);
+        bindCard(card);
+        createOverlay.classList.remove('open');
+      });
+
+      function escapeHtml(s) {
+        return s.replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      var pendingDelete = null;
+      document.getElementById('delete-cancel').addEventListener('click', function () { deleteOverlay.classList.remove('open'); });
+      deleteOverlay.addEventListener('click', function (e) { if (e.target === deleteOverlay) deleteOverlay.classList.remove('open'); });
+      document.getElementById('delete-confirm').addEventListener('click', function () {
+        if (pendingDelete) { pendingDelete.remove(); pendingDelete = null; }
+        deleteOverlay.classList.remove('open');
+      });
+
+      function bindCard(card) {
+        var nameEl = card.querySelector('.trip-name');
+
+        card.querySelector('[data-action="delete"]').addEventListener('click', function () {
+          pendingDelete = card;
+          document.getElementById('delete-body').textContent =
+            '„' + nameEl.textContent + '“ wird gelöscht. Auch Aktivitäten, Budgetdaten und die Packliste dieser Reise werden entfernt.';
+          deleteOverlay.classList.add('open');
+        });
+
+        card.querySelector('[data-action="rename"]').addEventListener('click', function () {
+          var link = card.querySelector('.trip-link');
+          var actions = card.querySelector('.trip-actions');
+          var original = nameEl.textContent;
+
+          var wrapper = document.createElement('div');
+          wrapper.className = 'rename-row';
+          var input = document.createElement('input');
+          input.className = 'input';
+          input.type = 'text';
+          input.value = original;
+          input.setAttribute('aria-label', 'Reisename');
+          var save = document.createElement('button');
+          save.type = 'button';
+          save.className = 'btn btn-primary btn-compact';
+          save.textContent = 'Speichern';
+          var cancel = document.createElement('button');
+          cancel.type = 'button';
+          cancel.className = 'btn btn-secondary btn-compact';
+          cancel.textContent = 'Abbrechen';
+          wrapper.appendChild(input);
+          wrapper.appendChild(save);
+          wrapper.appendChild(cancel);
+
+          link.style.display = 'none';
+          actions.style.display = 'none';
+          link.parentNode.insertBefore(wrapper, link.nextSibling);
+
+          function commit() {
+            var val = input.value.trim();
+            if (!val) { input.classList.add('input'); input.setAttribute('aria-invalid', 'true'); return; }
+            nameEl.textContent = val;
+            teardown();
+          }
+          function teardown() {
+            wrapper.remove();
+            link.style.display = '';
+            actions.style.display = '';
+          }
+          save.addEventListener('click', commit);
+          cancel.addEventListener('click', teardown);
+          input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') commit();
+            if (e.key === 'Escape') teardown();
+          });
+          input.focus();
+        });
+      }
+
+      document.querySelectorAll('.trip-card').forEach(bindCard);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          createOverlay.classList.remove('open');
+          deleteOverlay.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
