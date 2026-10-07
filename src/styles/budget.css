@@ -1,0 +1,157 @@
+/* =====================================================================
+   Budget page — Budget summary block + CSS-only bar chart.
+   All values come from the design tokens in src/styles/index.css;
+   src/styles/index.css itself is owned by another ticket and untouched.
+   ===================================================================== */
+
+.page-sub {
+  margin-top: var(--space-0);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+/* ---- Budget summary block ------------------------------------------- */
+.budget-summary {
+  margin-bottom: var(--space-4);
+}
+
+.budget-total-label {
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+.budget-total {
+  margin-top: var(--space-0);
+  font-size: var(--size-display);
+  font-weight: var(--heading-weight);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-divider {
+  height: 1px;
+  margin: var(--space-3) 0;
+  background: var(--color-border);
+}
+
+.budget-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.budget-category-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.budget-category-label {
+  font-size: var(--size-body);
+  font-weight: 500;
+}
+
+.budget-category-amount {
+  font-size: var(--size-body);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-note {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--size-small);
+}
+
+/* ---- Bar chart (CSS only) ------------------------------------------- */
+.chart-title {
+  margin-bottom: var(--space-3);
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.category-bar {
+  display: grid;
+  grid-template-columns: 110px 1fr 72px;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.category-bar__label {
+  color: var(--color-fg-soft);
+  font-size: var(--size-small);
+}
+
+.category-bar__track {
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.category-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 200ms ease-out;
+}
+
+.category-bar__amount {
+  min-width: 72px;
+  text-align: right;
+  font-size: var(--size-small);
+  font-weight: var(--heading-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.category-bar__fill--travel {
+  background: var(--color-cat-travel);
+}
+
+.category-bar__fill--accommodation {
+  background: var(--color-cat-accommodation);
+}
+
+.category-bar__fill--food {
+  background: var(--color-cat-food);
+}
+
+.category-bar__fill--activity {
+  background: var(--color-cat-activity);
+}
+
+.category-bar__fill--shopping {
+  background: var(--color-cat-shopping);
+}
+
+.category-bar__fill--other {
+  background: var(--color-cat-other);
+}
+
+/* Mobile: label sits above the track, amount ends that same line. */
+@media (max-width: 480px) {
+  .category-bar {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'label label'
+      'track amount';
+    gap: var(--space-0) var(--space-2);
+  }
+
+  .category-bar__label {
+    grid-area: label;
+  }
+
+  .category-bar__track {
+    grid-area: track;
+  }
+
+  .category-bar__amount {
+    grid-area: amount;
+  }
+}
